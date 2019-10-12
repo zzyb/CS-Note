@@ -40,8 +40,9 @@
 
 1. ###### Action
 
-| foreach      |                                        |
+| Action       |                                        |
 | ------------ | -------------------------------------- |
+| foreach      |                                        |
 | count        |                                        |
 | countBykey   |                                        |
 | countByValue |                                        |
