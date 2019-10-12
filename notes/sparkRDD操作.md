@@ -18,14 +18,15 @@
 
 ## RDD特性
 
-![](/Users/zhangyanbo/Yber/try/CS-Note/png/RDD特性.jpg)
+![](../png/RDD特性.jpg)
 
 ## RDD算子分类
 
 1. ###### ActionTransformation（转换算子且lazy的）
 
-| map            |
+| Transformation |
 | -------------- |
+| map            |
 | flatMap        |
 | filter         |
 | sample         |
