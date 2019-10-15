@@ -706,7 +706,7 @@ mei
       "jiao xu yang"
     )
 
-		val list7ss = sc.parallelize(list7).flatMap(_.split("\\s+"))
+val list7ss = sc.parallelize(list7).flatMap(_.split("\\s+"))
 
     val first = list7ss.first()
 
@@ -724,7 +724,7 @@ zhang
 对RDD进行聚合操作。（要保证集合类型**不是**Key-value类型）
 
 ```scala
-		val nums = sc.parallelize(1 to 100)
+val nums = sc.parallelize(1 to 100)
     val sum = nums.reduce((a,b)=>a+b)
     println(s"sum:$sum")
 ```
