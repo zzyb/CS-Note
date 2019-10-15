@@ -22,9 +22,9 @@
 
 ## RDD算子分类
 
-1. ###### ActionTransformation（转换算子且lazy的）
+#### Transformation
 
-| Transformation                              |
+| Transformation（转换算子且lazy的）          |
 | ------------------------------------------- |
 | map                                         |
 | flatMap                                     |
@@ -38,7 +38,7 @@
 | combineBykey（combine的意思是**联合**）     |
 | aggregateByKey（aggregate的意思是**计数**） |
 
-1. ###### Action
+#### Action
 
 | Action       |                                        |
 | ------------ | -------------------------------------- |
@@ -51,6 +51,8 @@
 | first        |                                        |
 | reduce       | 容易混淆，reduce是一个action算子       |
 | saveXXX      | saveAsTextFile、saveAsNewAPIHadoopFile |
+| top          |                                        |
+| takeOrdered  |                                        |
 
 ## RDD算子编程实例
 
