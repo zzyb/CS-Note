@@ -374,11 +374,61 @@ val map2 = Map[String,Int](
 王五===>(男 177 19---89)
 ```
 
-
-
 - sortbyKey算子
 
+按照key进行排序。
 
+源码：
+
+```scala
+/**
+   * Sort the RDD by key, so that each partition contains a sorted range of the elements. Calling
+   * `collect` or `save` on the resulting RDD will return or output an ordered list of records
+   * (in the `save` case, they will be written to multiple `part-X` files in the filesystem, in
+   * order of the keys).
+   */
+  // TODO: this currently doesn't work on P other than Tuple2!
+  def sortByKey(ascending: Boolean = true, numPartitions: Int = self.partitions.length)
+      : RDD[(K, V)] = self.withScope
+  {
+    val part = new RangePartitioner(numPartitions, self, ascending)
+    new ShuffledRDD[K, V, V](self, part)
+      .setKeyOrdering(if (ascending) ordering else ordering.reverse)
+  }
+```
+
+案例：
+
+```scala
+val list1 = List(
+      "xiao tian tian",
+      "heng ha heng heng heng",
+      "shu ke shu ke ke"
+    )
+//拆分每行字符串为多个单词
+    val words:RDD[String] = sc.parallelize(list1).flatMap(_.split("\\s+"))
+//转化为String，Int二元组形式
+    val pairs:RDD[(String,Int)] = words.map((_,1))
+//按照key进行聚合
+    val rbk:RDD[(String,Int)] = pairs.reduceByKey(_+_)
+//通过map操作调换key-value位置（为了按照单词数量排序）
+    val temp1:RDD[(Int,String)] = rbk.map(t=>(t._2,t._1))
+//调用sortbyKey，参数一：升序，参数二：一个分区。
+    val temp2:RDD[(Int,String)] = temp1.sortByKey(true,1)
+//再次通过map调换key-value位置。（重新调整二元组格式为String，Int）
+    val results = temp2.map(t=>(t._2,t._1)).foreach(println)
+```
+
+结果：
+
+```
+(xiao,1)
+(ha,1)
+(shu,2)
+(tian,2)
+(ke,3)
+(heng,4)
+```
 
 - combinebyKey算子
 
@@ -522,7 +572,7 @@ def createCombiner1(value:Int):Int = {
 统计RDD中共有多少条记录。
 
 ```scala
-		val list7 = List(
+val list7 = List(
       "zhang mei mei",
       "wang ming ming",
       "xiao ming",
@@ -547,7 +597,7 @@ def createCombiner1(value:Int):Int = {
 统计每个key出现的次数。
 
 ```scala
-		val list7 = List(
+val list7 = List(
       "zhang mei mei",
       "wang ming ming",
       "xiao ming",
@@ -596,7 +646,7 @@ wang==>1
 统计每个value出现的次数。
 
 ```scala
-		val list9 = List("hello","marry","tom","cici","hello","hello","java")
+val list9 = List("hello","marry","tom","cici","hello","hello","java")
 
     val list9RDD:RDD[String] = sc.parallelize(list9)
 
@@ -622,7 +672,7 @@ Map((tom,1) -> 1, (cici,1) -> 1, (marry,1) -> 1, (java,1) -> 1, (hello,1) -> 3)
 take(num),获取该集合（RDD）中的前num个元素，**如果该RDD是一个有序的集合**，那么take(N)得到结果是**topN**。
 
 ```scala
-		val list7 = List(
+val list7 = List(
       "zhang mei mei",
       "wang ming ming",
       "xiao ming",
