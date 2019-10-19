@@ -273,3 +273,121 @@ x does not equals 5.
 命令（包括我们编写的脚本和shell函数）在执行完毕之后，会向操作系统发送一个值，称之为“退出状态”。
 
 这个值是一个0～255之间的整数，用来指示命令执行成功还是失败。0表示执行成功，其他数值表示执行失败。
+
+<u>shell提供了一种用于检测退出状态的参数。</u>
+
+```shell
+#执行一条命令，成功执行
+YberdeMacBook-Pro:Shell zhangyanbo$ ls -l shell001
+-rwxr-xr-x  1 zhangyanbo  staff  127 10 19 10:20 shell001
+#输出"$?",得到0（代表上一条命令执行成功）
+YberdeMacBook-Pro:Shell zhangyanbo$ echo $?
+0
+#执行一条命令，执行失败
+YberdeMacBook-Pro:Shell zhangyanbo$ ls -l shell
+ls: shell: No such file or directory
+#输出"$?",得到1（代表上一条命令执行失败）
+YberdeMacBook-Pro:Shell zhangyanbo$ echo $?
+1
+```
+
+shell提供了两个非常简单的内置命令，它们不做任何事情，除了以一个0或者1的退出状态来执行。true总表示成功，而false总表示是失败。
+
+```shell
+YberdeMacBook-Pro:Shell zhangyanbo$ true
+YberdeMacBook-Pro:Shell zhangyanbo$ echo $?
+0
+YberdeMacBook-Pro:Shell zhangyanbo$ false
+YberdeMacBook-Pro:Shell zhangyanbo$ echo $?
+1
+```
+
+#### test命令
+
+1. test命令常常和if一起使用。
+2. test命令会执行各种检查和比较，结果是true或false；表达式为true时，test命令返回0退出状态；表达式为false时，test命令退出状态为1。
+3. test命令有两种等价的表达形式：
+
+```shell
+#第一种形式
+test ecpression
+#第二种形式(注意中括号两边都是有空格的)
+[ test expression ]
+```
+
+##### 文件表达式
+
+| 表达式          | 成为true的条件                                               |
+| --------------- | ------------------------------------------------------------ |
+| File1 -ef file2 | 1和2拥有相同的信息节点编号（两个文件通过硬链接指向同一个文件） |
+| File -nt file2  | 1比2新                                                       |
+| File -ot file2  | 1比2旧                                                       |
+| -b file         | 存在且是块文件                                               |
+| -c file         | 存在且是字符文件                                             |
+| -d file         | 存在且是一个目录                                             |
+| -e file         | 存在																											|
+| -f file         | 存在且是普通文件                                             |
+| -g file         | 存在且设置了组ID                                             |
+| -G file         | 存在且属于有效组ID                                           |
+| -k file         | 存在且有“粘滞位”属性                                         |
+| -L file         | 存在且是一个符号链接                                         |
+| -O file         | 存在且属于有效用户ID                                         |
+| -p file         | 存在且是一个命名管道                                         |
+| -r file         | 存在且可读（有效用户有可读权限）                             |
+| -s file         | 存在且长度大于0                                              |
+| -S file         | 存在且是一个网络套接字                                       |
+| -t fd           | fd是一个定向到终端 / 从终端定向的文件描述符，可以用来确定标准输入/输出/错误是否被重定向 |
+| -u file         | 存在且设置了setuid位                                         |
+| -w file         | 存在且可写（有效用户有写权限）                               |
+| -x file         | 存在且可执行（有效用户有执行/搜索权限）                      |
+
+
+
+##### 字符串表达式
+
+| 表达式           | 成为true的条件                 |
+| ---------------- | ------------------------------ |
+| string           | string不为空                   |
+| -n string        | string长度大于0                |
+| -z string        | string长度等于0                |
+| string1=string2  | string1和string2相等           |
+| string1==string2 | string1和string2相等（更常用） |
+| string1!=string2 | string1和string2不相等         |
+| string1>string2  | 排序时，string1在string2之后   |
+| string1<string2  | 排序时，string1在string2之前   |
+
+
+
+##### 整数表达式
+
+| 表达式                | 成为true的条件 |
+| --------------------- | -------------- |
+| Integer1 -eq integer2 | 1和2相等       |
+| Integer1 -ne integer2 | 1和2不相等     |
+| Integer1 -le integer2 | 1小于等于2     |
+| Integer1 -lt integer2 | 1小于2         |
+| Integer1 -ge integer2 | 1大于等于2     |
+| Integer1 -gt integer2 | 1大于2         |
+
+
+
+#### 更现代的test命令
+
+1. 相当于增强test命令。
+
+2. 语法--->[[ expression ]]--->表达式结果为true或false。
+
+3. 增加了两个特性：
+
+   - 新的字符串表达式
+
+   - ```shell
+     string1=~regex
+     #如果string1与扩展的正则表达式regex匹配，则返回true。
+     ```
+
+   - ==操作符支持模式匹配
+
+#### (())-----为整数设计
+
+#### 组合表达式
