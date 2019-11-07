@@ -295,7 +295,7 @@ Scala的API包含了set的基本特质（trait），特质的概念接近于Java
   - 三个特质共享相同的简化名，set。然而全程不一样，每个特质都包含在不同的包里。
   - 在使用的时候，根据自己的需要选择可变和不可变的类型。
 
-![](./png/set.png)
+![](../png/set.png)
 
 ```scala
 var jetSet = Set("hello","yangyang")
@@ -316,7 +316,7 @@ println(jetSet.contains("yber"))
 
 - 和set类似，使用工厂方法构造和初始化。
 
-![](./png/map.png)
+![](../png/map.png)
 
 ```scala
 import scala.collection.mutable.Map

@@ -24,7 +24,7 @@ val csa = new ChecksumAccmulator
 
 在内存中是这样的：
 
-![](./png/实例化对象.png)
+![](../png/实例化对象.png)
 
 注意：
 
