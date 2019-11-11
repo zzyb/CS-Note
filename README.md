@@ -76,7 +76,7 @@
 
 ### Scala
 
-[Scala1](./notes/scala/scala.md)
+[Scala1](./notes/scala/scala1.md)
 
 [Scala类与对象](./notes/scala/scala2类与对象.md)
 
