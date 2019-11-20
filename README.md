@@ -37,6 +37,21 @@
 
 ***************************************持续更新********************************************
 
+### LInux
+
+[linux系统](./notes/Linux/Linux系统.md)
+
+[操作文件与目录](./notes/Linux/操作文件与目录.md)
+
+[透过shell看世界](./notes/Linux/透过shell看世界.md)
+
+[重定向](./notes/Linux/重定向.md)
+
+
+[进程](./notes/Linux/进程.md)
+
+***************************************持续更新********************************************
+
 ### shell脚本
 
 [Shell脚本编程](./notes/Shell脚本.md)
@@ -72,5 +87,23 @@
 
 ***************************************持续更新********************************************
 
+## 编程语言
 
+### Scala
+
+[Scala1](./notes/scala/scala1.md)
+
+[Scala类与对象](./notes/scala/scala2类与对象.md)
+
+[Scala基本类型](./notes/scala/scala3基本类型.md)
+
+[Scala函数式对象](./notes/scala/scala4函数式对象.md)
+
+[Scala控制结构](./notes/scala/scala5控制结构.md)
+
+[Scala函数与闭包](./notes/scala/scala6函数与闭包.md)
+
+[Scala控制抽象](./notes/scala/scala7控制抽象.md)
+
+[Scala组合与继承](./notes/scala/scala8组合与继承.md)
 
