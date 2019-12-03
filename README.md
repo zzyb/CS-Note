@@ -47,6 +47,7 @@
 
 [重定向](./notes/Linux/重定向.md)
 
+[权限](./notes/Linux/权限.md)
 
 [进程](./notes/Linux/进程.md)
 
