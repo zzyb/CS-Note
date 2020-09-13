@@ -84,7 +84,11 @@
   - RDD算子分类（常用）
   - RDD算子编程实例
 
-[sparkStreaming](./notes/sparkRDD操作.md)
+### SparkStreaming
+
+案例：
+
+[sparkStreaming](./notes/spark/SparkStreaming案例/reduceByKeyAndWindow.md)
 
 [spark排序](./notes/spark排序.md)
 
