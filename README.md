@@ -74,6 +74,8 @@
 
 ### spark
 
+[spark整体介绍](./notes/spark/Spark.md)
+
 [sparkRDD介绍与编程](./notes/sparkRDD操作.md)
 
 - sparkRDD介绍与编程
@@ -81,6 +83,12 @@
   - RDD特性
   - RDD算子分类（常用）
   - RDD算子编程实例
+
+### SparkStreaming
+
+案例：
+
+[sparkStreaming](./notes/spark/SparkStreaming案例/reduceByKeyAndWindow.md)
 
 [spark排序](./notes/spark排序.md)
 
