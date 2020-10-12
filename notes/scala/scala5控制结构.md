@@ -51,7 +51,7 @@
   //利用do-while从标准输入读取信息
   ```
 
-- while和do-while结构是“循环”而不是表达式！因为它们不能产生有意义的结果，结果类型是`Unit`，表明存在并且唯一存在类型为Unit的值，称之为unit value，写成()。
+- **while和do-while结构是“循环”而不是表达式！因为它们不能产生有意义的结果，结果类型是`Unit`**，表明存在并且唯一存在类型为Unit的值，称之为unit value，写成()。
 
   - `()`的存在是Scala的Unit不同于Java的void的地方。
 
@@ -114,7 +114,7 @@ for(file <- filesHere if file.getName.endsWith(".scala"))
 ```
 
 - 如果需要的话，我们可以包含更多的过滤器。只需要不断增加if子句即可。
-  - 如果发生器中加入超过一个过滤器，if子句必须用分号分隔。
+  - 如果发生器中加入**超过一个过滤器，if子句必须用分号分隔。**
 
 ```scala
 val filesHere = (new java.io.File(".")).listFiles
